@@ -14,3 +14,4 @@ class PlacesCrawlerItem(scrapy.Item):
     # name = scrapy.Field()
     name = Field()
     link = Field()
+    short_decription = Field()

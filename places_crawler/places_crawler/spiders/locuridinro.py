@@ -15,10 +15,11 @@ class LocuridinroSpider(scrapy.Spider):
     def parse(self, response):
         responseSelector = Selector(response)
 
-        for sel in responseSelector.xpath('//article/header'):
+        for sel in responseSelector.xpath('//article'):
             item = PlacesCrawlerItem()
-            name = sel.xpath('a/@title').extract()
+            name = sel.xpath('header/a/@title').extract()
             item['name'] = name[0] if name else ""
-            item['link'] = sel.xpath('a/@href').extract()
+            item['link'] = sel.xpath('header/a/@href').extract()
+            item['short_decription'] = sel.xpath('div[@class="entry-content"]').extract()
 
             yield item
