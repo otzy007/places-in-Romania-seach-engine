@@ -12,7 +12,7 @@ class LocuridinroSpider(scrapy.Spider):
     allowed_domains = ["locuridinromania.ro"]
 
     start_urls = []
-    for page in xrange(1,7):
+    for page in xrange(1,11):
         start_urls += [
             'http://www.locuridinromania.ro/categorie/locuri-de-vizitat-in-romania/locuri-din-judetul-alba/page/%s' % page,
             'http://www.locuridinromania.ro/categorie/locuri-de-vizitat-in-romania/locuri-din-judetul-arad/page/%s' % page,
