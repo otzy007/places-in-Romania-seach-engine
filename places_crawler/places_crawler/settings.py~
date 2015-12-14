@@ -14,8 +14,6 @@ ITEM_PIPELINES = [
     'scrapyelasticsearch.scrapyelasticsearch.ElasticSearchPipeline',
 ]
 
-DOWNLOAD_DELAY = 1
-
 BOT_NAME = 'places_crawler'
 
 SPIDER_MODULES = ['places_crawler.spiders']
@@ -24,7 +22,7 @@ NEWSPIDER_MODULE = 'places_crawler.spiders'
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'places_crawler (+http://www.yourdomain.com)'
 
-ELASTICSEARCH_SERVER = '127.0.0.1'
+ELASTICSEARCH_SERVER = '192.168.0.103'
 ELASTICSEARCH_PORT = 9200
 ELASTICSEARCH_INDEX = 'places'
 ELASTICSEARCH_TYPE = 'place'
