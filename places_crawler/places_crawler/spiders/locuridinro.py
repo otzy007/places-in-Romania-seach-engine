@@ -10,9 +10,11 @@ logger = logging.getLogger('mycustomlogger')
 class LocuridinroSpider(scrapy.Spider):
     name = "locuridinro"
     allowed_domains = ["locuridinromania.ro"]
-    start_urls = (
-        u'http://www.locuridinromania.ro/categorie/locuri-de-vizitat-in-romania/locuri-din-judetul-alba', u'http://www.locuridinromania.ro/categorie/locuri-de-vizitat-in-romania/locuri-din-judetul-arad'
-    )
+    for page in xrange(1,7):
+        start_urls = [
+            'http://www.locuridinromania.ro/categorie/locuri-de-vizitat-in-romania/locuri-din-judetul-alba/page/%s' % page,
+            'http://www.locuridinromania.ro/categorie/locuri-de-vizitat-in-romania/locuri-din-judetul-arad/page/%s' % page
+        ]
 
     def parse(self, response):
         responseSelector = Selector(response)
@@ -41,10 +43,14 @@ class LocuridinroSpider(scrapy.Spider):
         item['image'] = sel.xpath('div[@class="entry-content"]/h3/img/@data-lazy-src').extract()
 
         if item['image'] == []:
+            item['image'] = sel.xpath('div[@class="entry-content"]/h3/img/@src').extract()
+        if item['image'] == []:
             item['image'] = sel.xpath('div[@class="entry-content"]/p/img/@src').extract()
         if item['image'] == []:
             item['image'] = sel.xpath('div[@class="entry-content"]/p/a/img/@data-lazy-src').extract()
         if item['image'] == []:
             item['image'] = sel.xpath('div[@class="entry-content"]/h3/a/img/@data-lazy-src').extract()
+        if item['image'] == []:
+            item['image'] = sel.xpath('div[@class="entry-content"]/div/em/strong/a/img/@data-lazy-src').extract()
 
         return item
