@@ -10,8 +10,10 @@ logger = logging.getLogger('mycustomlogger')
 class LocuridinroSpider(scrapy.Spider):
     name = "locuridinro"
     allowed_domains = ["locuridinromania.ro"]
+
+    start_urls = []
     for page in xrange(1,7):
-        start_urls = [
+        start_urls += [
             'http://www.locuridinromania.ro/categorie/locuri-de-vizitat-in-romania/locuri-din-judetul-alba/page/%s' % page,
             'http://www.locuridinromania.ro/categorie/locuri-de-vizitat-in-romania/locuri-din-judetul-arad/page/%s' % page
         ]
