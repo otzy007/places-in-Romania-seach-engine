@@ -53,4 +53,6 @@ class LocuridinroSpider(scrapy.Spider):
         if item['image'] == []:
             item['image'] = sel.xpath('div[@class="entry-content"]/div/em/strong/a/img/@data-lazy-src').extract()
 
+        item['map'] = sel.css('div[class=gm-map]').extract()
+
         return item

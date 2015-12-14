@@ -16,3 +16,4 @@ class PlacesCrawlerItem(scrapy.Item):
     link = Field()
     short_decription = Field()
     image = Field()
+    map = Field()
