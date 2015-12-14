@@ -14,6 +14,8 @@ ITEM_PIPELINES = [
     'scrapyelasticsearch.scrapyelasticsearch.ElasticSearchPipeline',
 ]
 
+DOWNLOAD_DELAY = 1
+
 BOT_NAME = 'places_crawler'
 
 SPIDER_MODULES = ['places_crawler.spiders']
