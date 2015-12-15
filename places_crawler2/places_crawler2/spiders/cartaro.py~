@@ -9,7 +9,7 @@ class CartaroSpider(scrapy.Spider):
     name = "cartaro"
     allowed_domains = ["carta.ro"]
     start_urls = [
-        u'http://carta.ro/obiective-turistice-defileul-dunarii/'
+        u'http://carta.ro/obiective-turistice-romania/'
     ]
 
     def parse(self, response):
@@ -18,7 +18,9 @@ class CartaroSpider(scrapy.Spider):
 	print(response)
         for sel in responseSelector.xpath('//div[@itemtype="http://schema.org/TouristAttraction"]'):
             item = PlacesCrawler2Item()
-            item['name'] = sel.xpath('a/h3').extract()
-            item['short_decription'] = sel.xpath('div/span[@itemprop="description"]').extract()
+            item['name'] = sel.xpath('a/h3').extract()[0]
+            item['address'] = sel.xpath('div[@itemprop="address"]').extract()
+            item['image'] = sel.xpath('div/img/@src').extract()
+            item['decription'] = sel.xpath('div/span[@itemprop="description"]').extract()
 
             yield item

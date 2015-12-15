@@ -10,6 +10,10 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 from scrapy import log
 
+ITEM_PIPELINES = [
+    'scrapyelasticsearch.scrapyelasticsearch.ElasticSearchPipeline',
+]
+
 BOT_NAME = 'places_crawler2'
 
 SPIDER_MODULES = ['places_crawler2.spiders']
@@ -21,8 +25,8 @@ NEWSPIDER_MODULE = 'places_crawler2.spiders'
 
 ELASTICSEARCH_SERVER = '127.0.0.1'
 ELASTICSEARCH_PORT = 9200
-ELASTICSEARCH_INDEX = 'places'
-ELASTICSEARCH_TYPE = 'place'
+ELASTICSEARCH_INDEX = 'places2'
+ELASTICSEARCH_TYPE = 'place2'
 ELASTICSEARCH_UNIQ_KEY = 'name'
 ELASTICSEARCH_LOG_LEVEL= log.DEBUG
 
