@@ -17,3 +17,4 @@ class PlacesCrawlerItem(scrapy.Item):
     short_decription = Field()
     image = Field()
     map = Field()
+    county = Field()

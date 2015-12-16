@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import scrapy
 import logging
+import re
 from scrapy.spider import BaseSpider
 from scrapy.selector import Selector
 from places_crawler.items import PlacesCrawlerItem
@@ -65,6 +66,7 @@ class LocuridinroSpider(scrapy.Spider):
             item = PlacesCrawlerItem()
             name = sel.xpath('header/a/@title').extract()
             item['name'] = name[0] if name else ""
+            county = re.search('locuri-din-judetul-(.*)', response.url).group(1)
 
             link = sel.xpath('header/a/@href').extract()
             item['link'] = link
