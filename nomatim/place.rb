@@ -5,6 +5,9 @@ class Place
 
   attribute :id, String
   attribute :name, String
+  attribute :name_en, String
+  attribute :name_ro, String
+  attribute :name_fr, String
   attribute :image, String
   attribute :short_description, String
   attribute :link, String
